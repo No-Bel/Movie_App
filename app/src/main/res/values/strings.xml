@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="jack_reacher">Jack Reacher</string>
+    <string name="overview">When a gunman takes five lives with six shots, all evidence points to the suspect in custody.</string>
+    <string name="movie_name">Jack Reacher</string>
+    <string name="some_kind_of_information">When a gunman takes five lives with six shots, all evidence points to the suspect in custody.\nWhen a gunman takes five lives with six shots, all evidence points to the suspect in custody.</string>
+</resources>
