@@ -6,9 +6,10 @@
         <entry key="..\:/programing_staff/AndroidStudio_Project/Livingstone_movie_app/24(10.16)/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1125" />
         <entry key="..\:/programing_staff/AndroidStudio_Project/Livingstone_movie_app/24(10.16)/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/programing_staff/AndroidStudio_Project/Livingstone_movie_app/24(10.16)/app/src/main/res/layout/fragment_home_screen.xml" value="0.18704710144927536" />
-        <entry key="..\:/programing_staff/AndroidStudio_Project/Livingstone_movie_app/24(10.16)/app/src/main/res/layout/fragment_movie_detail_screen.xml" value="0.14673913043478262" />
+        <entry key="..\:/programing_staff/AndroidStudio_Project/Livingstone_movie_app/24(10.16)/app/src/main/res/layout/fragment_movie_detail_screen.xml" value="0.22" />
         <entry key="..\:/programing_staff/AndroidStudio_Project/Livingstone_movie_app/24(10.16)/app/src/main/res/layout/fragment_movie_screen.xml" value="0.25" />
         <entry key="..\:/programing_staff/AndroidStudio_Project/Livingstone_movie_app/24(10.16)/app/src/main/res/layout/movie_row.xml" value="0.2" />
+        <entry key="..\:/programing_staff/AndroidStudio_Project/Livingstone_movie_app/24(10.16)/app/src/main/res/layout/similar_movie_row.xml" value="0.25" />
       </map>
     </option>
   </component>

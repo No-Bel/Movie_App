@@ -12,11 +12,19 @@ import retrofit2.Response
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
     val myResponse: MutableLiveData<Response<Movies>> = MutableLiveData()
+    val myResponse2: MutableLiveData<Response<Movies>> = MutableLiveData()
 
     fun getMovie(api: String) {
         viewModelScope.launch {
             val response = repository.getMovie(api)
             myResponse.value = response
+        }
+    }
+
+    fun getSimilarMovieVm(id: Int, api: String) {
+        viewModelScope.launch {
+            val response = repository.getSimilarMovieRp(id, api)
+            myResponse2.value = response
         }
     }
 }
