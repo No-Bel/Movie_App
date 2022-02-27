@@ -10,6 +10,7 @@ import com.example.movieapp.const.Constants
 import com.example.movieapp.const.Constants.Companion.IMAGE_BASE_URL
 import com.example.movieapp.moviedata.MovieData
 import kotlinx.android.synthetic.main.movie_row.view.*
+import kotlinx.android.synthetic.main.similar_movie_item_holder.view.*
 
 class SimilarAdapter : RecyclerView.Adapter<SimilarAdapter.SimilarViewHolder>() {
 
@@ -28,7 +29,7 @@ class SimilarAdapter : RecyclerView.Adapter<SimilarAdapter.SimilarViewHolder>() 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimilarViewHolder {
         return SimilarViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.similar_movie_row, parent, false)
+                .inflate(R.layout.similar_movie_item_holder, parent, false)
         )
     }
 
@@ -40,9 +41,12 @@ class SimilarAdapter : RecyclerView.Adapter<SimilarAdapter.SimilarViewHolder>() 
         val movieImg = currentItem.backdropPath
 
         val currentImg = imgBaseUrl + movieImg
-        val imgHolder = holder.itemView.img_itemHolder
-        val context = holder.itemView.context
-//        Glide.with(holder.itemView.context).load(currentImg).into(imgHolder)
+        val imgHolder = holder.itemView.imageView
+        val context = holder.itemView.imageView
+
+        Glide.with(imgHolder).load(currentImg)
+            .override(500,500)
+            .into(context)
         holder.similarMovieDetail(currentItem)
 
 

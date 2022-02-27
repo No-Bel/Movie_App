@@ -1,9 +1,6 @@
 package com.example.movieapp.fragment
 
-import android.icu.number.Scale
 import android.os.Bundle
-import android.transition.Scene
-import android.transition.Transition
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View

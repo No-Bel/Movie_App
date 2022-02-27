@@ -71,13 +71,15 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
         similarRecyclerView.adapter = similarAdapter
         similarAdapter.editSimilarMovieItem(this)
 
-
+        val id = movie.id
 
         repository = Repository()
         viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        viewModel.getMovie(API_KEY)
-        viewModel.myResponse.observe(viewLifecycleOwner, Observer {
+        if (id != null) {
+            viewModel.getSimilarMovieVm(id ,API_KEY)
+        }
+        viewModel.myResponse2.observe(viewLifecycleOwner, Observer {
             similarAdapter.setSimilarMovieData(it.body()!!.results)
             Log.d("Res", "${it.body()}")
 
@@ -86,6 +88,7 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
 
         return view
     }
+
 
 
     private fun backToHomeScreen() {
