@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -39,8 +40,6 @@ class HomeScreenFragment : Fragment(), MyAdapter.DetailScreen {
 
         val view = (binding.root)
 
-
-
         myAdapter = MyAdapter()
         myRecyclerView = binding.movieRecyclerView
         myRecyclerView.adapter = myAdapter
@@ -57,12 +56,19 @@ class HomeScreenFragment : Fragment(), MyAdapter.DetailScreen {
             Log.d("Response", "${it.body()}")
         })
 
-
-
-
         return view
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //Animation
+        //declare the animation
+        val btt = AnimationUtils.loadAnimation(requireContext(),R.anim.btt)
+        val movieRecycler = binding.movieRecyclerView
+
+        movieRecycler.startAnimation(btt)
+    }
 
     override fun detailScreen(movie: MovieData) {
         fragmentManager
