@@ -10,7 +10,6 @@ class Repository {
         return MyRetrofit.api.getMovie(api)
     }
 
-
     suspend fun getSimilarMovieRp(id: Int, api: String): Response<Movies> {
         return MyRetrofit.api.getSimilarMovie(id,api)
     }

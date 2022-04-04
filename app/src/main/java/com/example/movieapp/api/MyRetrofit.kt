@@ -11,12 +11,9 @@ object MyRetrofit {
             .baseUrl(API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
     }
 
     val api: ApiInterface by lazy {
         retrofit.create(ApiInterface::class.java)
     }
-
-
 }

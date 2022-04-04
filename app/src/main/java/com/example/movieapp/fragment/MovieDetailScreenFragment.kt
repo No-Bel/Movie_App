@@ -6,9 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -24,20 +22,16 @@ import com.example.movieapp.moviedata.MovieData
 import com.example.movieapp.repository.Repository
 import com.example.movieapp.viewmodel.MainViewModel
 import com.example.movieapp.viewmodel.MainViewModelFactory
-import kotlinx.android.synthetic.main.fragment_movie_detail_screen.*
 
 class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
     SimilarAdapter.SimilarDetailScreen {
 
     private lateinit var binding: FragmentMovieDetailScreenBinding
-
     private lateinit var similarAdapter: SimilarAdapter
     private lateinit var similarRecyclerView: RecyclerView
     private lateinit var viewModel: MainViewModel
     private lateinit var repository: Repository
     private lateinit var viewModelFactory: MainViewModelFactory
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,9 +40,13 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
     ): View {
         binding = FragmentMovieDetailScreenBinding.inflate(layoutInflater)
         val view = (binding.root)
-
+        init()
+        detailScreenInfo()
         backToHomeScreen()
+        return view
+    }
 
+    private fun detailScreenInfo() {
         //image_base_url + backdrop_path
         val backdropPath = movie.backdropPath
         val imageBaseUrl = IMAGE_BASE_URL
@@ -59,12 +57,12 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
         val movieOverview = binding.overviewTxt
         val movieImg = binding.movieImage
 
-
         movieName.text = movie.name
         movieOverview.text = movie.overview
         Glide.with(this).load(img).into(movieImg)
+    }
 
-
+    private fun init() {
         //similar movie recycler
         similarAdapter = SimilarAdapter()
         similarRecyclerView = binding.similarMovieRecycler
@@ -81,28 +79,21 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
         viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         if (id != null) {
-            viewModel.getSimilarMovieVm(id ,API_KEY)
+            viewModel.getSimilarMovieVm(id, API_KEY)
         }
         viewModel.myResponse2.observe(viewLifecycleOwner, Observer {
             similarAdapter.setSimilarMovieData(it.body()!!.results)
             Log.d("Res", "${it.body()}")
-
         })
-
-
-
-
-        return view
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Animation
         //declare the animation
-        val stImg = AnimationUtils.loadAnimation(requireContext(),R.anim.st_img)
-        val btt = AnimationUtils.loadAnimation(requireContext(),R.anim.btt)
-        val forBtn = AnimationUtils.loadAnimation(requireContext(),R.anim.for_btn)
+        val stImg = AnimationUtils.loadAnimation(requireContext(), R.anim.st_img)
+        val btt = AnimationUtils.loadAnimation(requireContext(), R.anim.btt)
+        val forBtn = AnimationUtils.loadAnimation(requireContext(), R.anim.for_btn)
 
         val movieName = binding.movieNameTxt
         val movieOverview = binding.overviewTxt

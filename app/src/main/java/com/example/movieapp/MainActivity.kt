@@ -9,16 +9,13 @@ import com.example.movieapp.fragment.MovieDetailScreenFragment
 
 class MainActivity : AppCompatActivity(), MovieDetailScreenFragment.GoHomeScreen {
 
-
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         homeScreen()
-
     }
 
     //first app screen
@@ -28,7 +25,6 @@ class MainActivity : AppCompatActivity(), MovieDetailScreenFragment.GoHomeScreen
             .replace(R.id.fragment_container, HomeScreenFragment())
             .commit()
     }
-
 
     override fun goHomeScreen() {
         supportFragmentManager

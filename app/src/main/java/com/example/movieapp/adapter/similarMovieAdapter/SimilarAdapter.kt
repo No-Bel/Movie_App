@@ -21,10 +21,8 @@ class SimilarAdapter : RecyclerView.Adapter<SimilarAdapter.SimilarViewHolder>() 
             itemView.setOnClickListener {
                 listenerSimilarDetailScreen?.similarDetailScreen(movie)
             }
-
         }
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimilarViewHolder {
         return SimilarViewHolder(
@@ -48,8 +46,6 @@ class SimilarAdapter : RecyclerView.Adapter<SimilarAdapter.SimilarViewHolder>() 
             .override(500,500)
             .into(context)
         holder.similarMovieDetail(currentItem)
-
-
     }
 
     override fun getItemCount() = similarList.size
@@ -68,5 +64,4 @@ class SimilarAdapter : RecyclerView.Adapter<SimilarAdapter.SimilarViewHolder>() 
     fun editSimilarMovieItem(listener: SimilarDetailScreen) {
         this.listenerSimilarDetailScreen = listener
     }
-
 }

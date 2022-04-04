@@ -12,19 +12,15 @@ import kotlinx.android.synthetic.main.movie_row.view.*
 
 class MyAdapter : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-
     private var movieList = ArrayList<MovieData>()
-
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun movieDetail(movie: MovieData) {
             itemView.setOnClickListener {
                 listenerDetailScreen?.detailScreen(movie)
-
             }
         }
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
@@ -47,10 +43,7 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
         holder.itemView.movie_name.text = currentItem.name
         holder.itemView.vote_average.text = currentItem.voteAverage.toString()
-
         holder.movieDetail(currentItem)
-
-
     }
 
     override fun getItemCount() = movieList.size
@@ -69,5 +62,4 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     fun editMovieItem(listener: DetailScreen) {
         this.listenerDetailScreen = listener
     }
-
 }

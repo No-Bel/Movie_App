@@ -29,17 +29,18 @@ class HomeScreenFragment : Fragment(), MyAdapter.DetailScreen {
     private lateinit var repository: Repository
     private lateinit var viewModelFactory: MainViewModelFactory
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentHomeScreenBinding.inflate(layoutInflater)
-
         val view = (binding.root)
+        init()
+        return view
+    }
 
+    private fun init() {
         myAdapter = MyAdapter()
         myRecyclerView = binding.movieRecyclerView
         myRecyclerView.adapter = myAdapter
@@ -55,8 +56,6 @@ class HomeScreenFragment : Fragment(), MyAdapter.DetailScreen {
             myAdapter.setMovieData(it.body()!!.results)
             Log.d("Response", "${it.body()}")
         })
-
-        return view
     }
 
 
