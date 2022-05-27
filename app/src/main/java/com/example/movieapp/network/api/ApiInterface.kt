@@ -5,7 +5,7 @@ import com.example.movieapp.moviedata.Movies
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
+
 //https://api.themoviedb.org/3/tv/popular?api_key=ae20305f42c7fc7180a305e413152439&page
 //https://api.themoviedb.org/3/tv/{tv_id}/similar?api_key=ae20305f42c7fc7180a305e413152439&page
 

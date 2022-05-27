@@ -14,14 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.adapter.similarMovieAdapter.SimilarAdapter
-import com.example.movieapp.const.Constants.Companion.API_KEY
 import com.example.movieapp.const.Constants.Companion.IMAGE_BASE_URL
 import com.example.movieapp.databinding.FragmentMovieDetailScreenBinding
 import com.example.movieapp.moviedata.MovieData
-import com.example.movieapp.repository.Repository
 import com.example.movieapp.viewmodel.MainViewModel
-import org.koin.android.ext.android.get
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),

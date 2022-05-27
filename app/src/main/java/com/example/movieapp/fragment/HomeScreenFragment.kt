@@ -12,10 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
 import com.example.movieapp.adapter.MyAdapter
-import com.example.movieapp.const.Constants.Companion.API_KEY
 import com.example.movieapp.databinding.FragmentHomeScreenBinding
 import com.example.movieapp.moviedata.MovieData
-import com.example.movieapp.repository.Repository
 import com.example.movieapp.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
