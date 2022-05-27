@@ -40,6 +40,7 @@ class HomeScreenFragment : Fragment(), MyAdapter.DetailScreen {
         return view
     }
 
+
     private fun init() {
         myAdapter = MyAdapter()
         myRecyclerView = binding.movieRecyclerView
@@ -70,10 +71,10 @@ class HomeScreenFragment : Fragment(), MyAdapter.DetailScreen {
     }
 
     override fun detailScreen(movie: MovieData) {
-        fragmentManager
-            ?.beginTransaction()
-            ?.replace(R.id.fragment_container, MovieDetailScreenFragment(movie))
-            ?.commit()
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, MovieDetailScreenFragment(movie))
+            .commit()
     }
 }
 

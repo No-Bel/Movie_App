@@ -1,5 +1,6 @@
 package com.example.movieapp.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,14 +18,22 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     fun getMovie(api: String) {
         viewModelScope.launch {
             val response = repository.getMovie(api)
-            myResponse.value = response
+            if (response.isSuccessful) {
+                myResponse.value = response
+            }else {
+                Log.d("TAG", "getMovie: ERROR")
+            }
         }
     }
 
     fun getSimilarMovieVm(id: Int, api: String) {
         viewModelScope.launch {
             val response = repository.getSimilarMovieRp(id, api)
-            myResponse2.value = response
+            if (response.isSuccessful) {
+                myResponse2.value = response
+            } else {
+                Log.d("TAG", "getSimilarMovieVm: ERROR")
+            }
         }
     }
 }

@@ -53,7 +53,7 @@ dependencies {
 
     //Gson
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
@@ -62,5 +62,11 @@ dependencies {
 
     //dependencies for img
     implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    // DI Koin
+    def koin_version = '3.2.0'
+    // main features for Android (Scope,ViewModel ...)
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-test:$koin_version"
 
 }

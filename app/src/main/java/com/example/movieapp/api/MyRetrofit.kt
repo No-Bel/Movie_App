@@ -6,14 +6,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object MyRetrofit {
 
-    private val retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(API_BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    private var retrofit: Retrofit? = null
+
+    private fun getRetro(): Retrofit {
+        if (retrofit == null) {
+            synchronized(this) {
+               retrofit = Retrofit.Builder()
+                    .baseUrl(API_BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+            }
+        }
+        return retrofit!!
     }
 
     val api: ApiInterface by lazy {
-        retrofit.create(ApiInterface::class.java)
+        getRetro().create(ApiInterface::class.java)
     }
 }

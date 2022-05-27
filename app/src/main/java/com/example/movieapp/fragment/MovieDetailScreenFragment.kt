@@ -122,10 +122,10 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
 
 
     override fun similarDetailScreen(movie: MovieData) {
-        fragmentManager
-            ?.beginTransaction()
-            ?.replace(R.id.fragment_container, MovieDetailScreenFragment(movie))
-            ?.commit()
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, MovieDetailScreenFragment(movie))
+            .commit()
     }
 
     override fun onAttach(context: Context) {
