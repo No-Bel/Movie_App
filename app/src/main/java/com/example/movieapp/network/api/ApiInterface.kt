@@ -1,4 +1,4 @@
-package com.example.movieapp.api
+package com.example.movieapp.network.api
 
 
 import com.example.movieapp.moviedata.Movies
@@ -13,12 +13,10 @@ interface ApiInterface {
 
     @GET("3/tv/popular")
     suspend fun getMovie(
-        @Query("api_key") api: String
     ): Response<Movies>
 
     @GET("/3/tv/{tv_id}/similar")
     suspend fun getSimilarMovie(
-        @Path("tv_id") tv_id: Int,
-        @Query("api_key") api: String
+        @Path("tv_id") tv_id: Int
     ): Response<Movies>
 }

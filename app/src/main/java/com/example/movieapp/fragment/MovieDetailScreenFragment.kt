@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -21,7 +20,9 @@ import com.example.movieapp.databinding.FragmentMovieDetailScreenBinding
 import com.example.movieapp.moviedata.MovieData
 import com.example.movieapp.repository.Repository
 import com.example.movieapp.viewmodel.MainViewModel
-import com.example.movieapp.viewmodel.MainViewModelFactory
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
     SimilarAdapter.SimilarDetailScreen {
@@ -29,9 +30,7 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
     private lateinit var binding: FragmentMovieDetailScreenBinding
     private lateinit var similarAdapter: SimilarAdapter
     private lateinit var similarRecyclerView: RecyclerView
-    private lateinit var viewModel: MainViewModel
-    private lateinit var repository: Repository
-    private lateinit var viewModelFactory: MainViewModelFactory
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,31 +61,6 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
         Glide.with(this).load(img).into(movieImg)
     }
 
-    private fun init() {
-        //similar movie recycler
-        similarAdapter = SimilarAdapter()
-        similarRecyclerView = binding.similarMovieRecycler
-        similarRecyclerView.layoutManager = LinearLayoutManager(
-            requireContext(),
-            LinearLayoutManager.HORIZONTAL, false
-        )
-        similarRecyclerView.adapter = similarAdapter
-        similarAdapter.editSimilarMovieItem(this)
-
-        val id = movie.id
-
-        repository = Repository()
-        viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        if (id != null) {
-            viewModel.getSimilarMovieVm(id, API_KEY)
-        }
-        viewModel.myResponse2.observe(viewLifecycleOwner, Observer {
-            similarAdapter.setSimilarMovieData(it.body()!!.results)
-            Log.d("Res", "${it.body()}")
-        })
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Animation
@@ -106,6 +80,28 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
         movieImg.startAnimation(stImg)
         sMovieRecycler.startAnimation(btt)
         backArrowBtn.startAnimation(forBtn)
+    }
+
+    private fun init() {
+        //similar movie recycler
+        similarAdapter = SimilarAdapter()
+        similarRecyclerView = binding.similarMovieRecycler
+        similarRecyclerView.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL, false
+        )
+        similarRecyclerView.adapter = similarAdapter
+        similarAdapter.editSimilarMovieItem(this)
+
+        val id = movie.id
+
+        if (id != null) {
+            viewModel.getSimilarMovieVm(id)
+        }
+        viewModel.myResponse2.observe(viewLifecycleOwner, Observer {
+            similarAdapter.setSimilarMovieData(it.body()!!.results)
+            Log.d("Res", "${it.body()}")
+        })
     }
 
     private fun backToHomeScreen() {

@@ -15,9 +15,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     val myResponse: MutableLiveData<Response<Movies>> = MutableLiveData()
     val myResponse2: MutableLiveData<Response<Movies>> = MutableLiveData()
 
-    fun getMovie(api: String) {
+    fun getMovie() {
         viewModelScope.launch {
-            val response = repository.getMovie(api)
+            val response = repository.getMovie()
             if (response.isSuccessful) {
                 myResponse.value = response
             }else {
@@ -26,9 +26,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun getSimilarMovieVm(id: Int, api: String) {
+    fun getSimilarMovieVm(id: Int) {
         viewModelScope.launch {
-            val response = repository.getSimilarMovieRp(id, api)
+            val response = repository.getSimilarMovieRp(id)
             if (response.isSuccessful) {
                 myResponse2.value = response
             } else {

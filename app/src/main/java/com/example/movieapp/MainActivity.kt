@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.movieapp.databinding.ActivityMainBinding
 import com.example.movieapp.fragment.HomeScreenFragment
 import com.example.movieapp.fragment.MovieDetailScreenFragment
+import com.example.movieapp.viewmodel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity(), MovieDetailScreenFragment.GoHomeScreen {
