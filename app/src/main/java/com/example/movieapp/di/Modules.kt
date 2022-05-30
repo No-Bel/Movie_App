@@ -13,14 +13,13 @@ val retrofitModule = module {
 }
 
 val viewModelModule = module {
+    viewModel { MainViewModel(get()) }
+}
+
+val networkModule = module {
     single { Repository(get()) }
 
-    viewModel { MainViewModel(get()) }
+    single { return@single get<MyRetrofit>().getRetro().create(ApiInterface::class.java) }
 
-    single {
-        return@single get<MyRetrofit>().getRetro().create(ApiInterface::class.java)
-    }
-    factory {
-        DefaultParameter()
-    }
+    factory { DefaultParameter() }
 }

@@ -11,7 +11,7 @@ class KoinApp: Application() {
         startKoin {
             androidLogger()
             androidContext(this@KoinApp)
-            modules(listOf(retrofitModule, viewModelModule))
+            modules(listOf(retrofitModule, viewModelModule, networkModule))
         }
     }
 }

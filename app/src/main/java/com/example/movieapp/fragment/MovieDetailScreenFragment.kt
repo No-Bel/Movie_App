@@ -112,7 +112,6 @@ class MovieDetailScreenFragment(private val movie: MovieData) : Fragment(),
         fun goHomeScreen()
     }
 
-
     override fun similarDetailScreen(movie: MovieData) {
         requireActivity().supportFragmentManager
             .beginTransaction()
